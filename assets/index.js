@@ -43,12 +43,12 @@ function checkTime () {
 }
 checkTime();
 
-//Onclick event to save user input in local storage
-$(document).ready(function(){
-    function clearStorage() {
-        localStorage.clear();
-    }
-
+//Function to execute each time the page is loaded
+// $(document).ready(function(){
+//     function clearStorage() {
+//         localStorage.clear();
+//     }
+    //Onclick event to save user input in local storage
     $(".saveBtn").on("click", function (event){
         event.preventDefault();
         // Save the value of the textarea to sessionStorage
@@ -56,12 +56,12 @@ $(document).ready(function(){
         localStorage.setItem(textAreaId, $(this).prev().val());
     });
 
-    $("#clear").on("click", clearStorage); 
+    // $("#clear").on("click", clearStorage);
     //when the document is ready, load the values from sessionStorage
     $(".description").each(function(){
         $(this).val(localStorage.getItem($(this).attr("id")));
     });
-});
+// });
 
 
 
