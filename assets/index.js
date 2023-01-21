@@ -1,5 +1,5 @@
 //Store current time and hour in variables
-var currentDay = moment().format('dddd, DD-MMM-YYYY');
+var currentDay = moment().format('dddd, MMMM Do');
 var currentHour = moment().format("H");
 
 //Variables to get planer text area blocks by hour
