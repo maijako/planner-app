@@ -5,16 +5,18 @@
 
 This is a code for a [Daily Planner App](https://maijako.github.io/planner-app).
 
-It features a simple responsive design and interactive buttons that save users daily tasks in local storage. 
+It features a simple responsive design, interactive buttons and color-coded time blocks to indicate past, current, and future hours.
 
 It was built using:
 * HTML
 * CSS
+* Bootstrap
 * JavaScript
 * jQuery
 * Google Fonts
 * Moment.js
 
+The functionality allows users to type in and save their tasks, which persist on reloading of the page:
 ![Calendar screen](./assets/images/05-third-party-apis-homework-demo.gif)
 
 
