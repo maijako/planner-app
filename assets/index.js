@@ -1,8 +1,6 @@
-//Set variables
+//Store current time and hour in variables
 var currentDay = moment().format('dddd, DD-MMM-YYYY HH:MM A');
 var currentHour = moment().format("H");
-var textArea = $("<textarea>");
-var saveBtn = $(".saveBtn");
 
 //Variables to get planer text area blocks by hour
     var nineAM = document.getElementById("9");
@@ -14,7 +12,7 @@ var saveBtn = $(".saveBtn");
     var threePM = document.getElementById("15");
     var fourPM = document.getElementById("16");
     var fivePM = document.getElementById("17");
-    var hourTextarea = [nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM];    
+var hourTextarea = [nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM];    
 
 //Variables to store hour blocks as numbers
     var nine = parseInt(nineAM.dataset.indexNumber);
@@ -26,9 +24,9 @@ var saveBtn = $(".saveBtn");
     var three = parseInt(threePM.dataset.indexNumber);
     var four = parseInt(fourPM.dataset.indexNumber);
     var five = parseInt(fivePM.dataset.indexNumber);
-    var hourBlocks = [nine, ten, eleven, twelve, one, two, three, four, five];
+var hourBlocks = [nine, ten, eleven, twelve, one, two, three, four, five];
 
-//The current date in the jumbotron
+//Display the current date in the jumbotron
 $("#currentDay").text(currentDay);
 
 //check if planner hour blocks are in the present or the past
@@ -44,4 +42,27 @@ function checkTime () {
     }
 }
 checkTime();
+
+//Onclick event to save user input in local storage
+$(document).ready(function(){
+    function clearStorage() {
+        localStorage.clear();
+    }
+
+    $(".saveBtn").on("click", function (event){
+        event.preventDefault();
+        // Save the value of the textarea to sessionStorage
+        var textAreaId = $(this).prev().attr("id");
+        localStorage.setItem(textAreaId, $(this).prev().val());
+    });
+
+    $("#clear").on("click", clearStorage); 
+    //when the document is ready, load the values from sessionStorage
+    $(".description").each(function(){
+        $(this).val(localStorage.getItem($(this).attr("id")));
+    });
+});
+
+
+
 
