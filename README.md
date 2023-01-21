@@ -17,12 +17,6 @@ It was built using:
 
 ![Calendar screen](./assets/images/05-third-party-apis-homework-demo.gif)
 
-The logic was written using JavaScript, and user input data was validated through a combination of functions, nested while loops and conditional statements, that help prompt user to input a valid value:
-![screenshot 1](placeholder)
-
-And return a valid password that satisfies the selected criteria:
-![screenshot 2](placeholder)
-
 
 ## Usage
 
