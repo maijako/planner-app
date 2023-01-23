@@ -3,51 +3,35 @@ var currentDay = moment().format('dddd, MMMM Do');
 var currentHour = moment().format("H");
 
 //Variables to get planer text area blocks by hour
-    var nineAM = document.getElementById("9");
-    var tenAM = document.getElementById("10");
-    var elevenAM = document.getElementById("11");
-    var twelvePM = document.getElementById("12");
-    var onePM = document.getElementById("13");
-    var twoPM= document.getElementById("14");
-    var threePM = document.getElementById("15");
-    var fourPM = document.getElementById("16");
-    var fivePM = document.getElementById("17");
+    var nineAM = $("#9");
+    var tenAM = $("#10");
+    var elevenAM = $("#11");
+    var twelvePM = $("#12");
+    var onePM = $("#13");
+    var twoPM = $("#14");
+    var threePM = $("#15");
+    var fourPM = $("#16");
+    var fivePM = $("#17")
 var hourTextarea = [nineAM, tenAM, elevenAM, twelvePM, onePM, twoPM, threePM, fourPM, fivePM];    
-
-//Variables to store hour blocks as numbers
-    var nine = parseInt(nineAM.dataset.indexNumber);
-    var ten = parseInt(tenAM.dataset.indexNumber);
-    var eleven = parseInt(elevenAM.dataset.indexNumber);
-    var twelve = parseInt(twelvePM.dataset.indexNumber);
-    var one = parseInt(onePM.dataset.indexNumber);
-    var two = parseInt(twoPM.dataset.indexNumber);
-    var three = parseInt(threePM.dataset.indexNumber);
-    var four = parseInt(fourPM.dataset.indexNumber);
-    var five = parseInt(fivePM.dataset.indexNumber);
-var hourBlocks = [nine, ten, eleven, twelve, one, two, three, four, five];
 
 //Display the current date in the jumbotron
 $("#currentDay").text(currentDay);
 
-//check if planner hour blocks are in the present or the past
 function checkTime () {
-    for (var i = 0; i<hourBlocks.length; i++) {
-        if (hourBlocks[i] < currentHour){
-            $(hourTextarea[i]).addClass("past");
-        } else if (hourBlocks[i] > currentHour){
-            $(hourTextarea[i]).addClass("future");
+    for (var i = 0; i<hourTextarea.length; i++) {
+        var textNumber = parseInt(hourTextarea[i].attr("id"));
+        if (textNumber < currentHour){
+            (hourTextarea[i]).addClass("past");
+        } else if (textNumber > currentHour){
+            (hourTextarea[i]).addClass("future");
         } else {
-            $(hourTextarea[i]).addClass("present");
+            (hourTextarea[i]).addClass("present");
         }
     }
 }
 checkTime();
+console.log(hourTextarea[0].class())
 
-//Function to execute each time the page is loaded
-// $(document).ready(function(){
-//     function clearStorage() {
-//         localStorage.clear();
-//     }
     //Onclick event to save user input in local storage
     $(".saveBtn").on("click", function (event){
         event.preventDefault();
@@ -56,12 +40,11 @@ checkTime();
         localStorage.setItem(textAreaId, $(this).prev().val());
     });
 
-    // $("#clear").on("click", clearStorage);
     //when the document is ready, load the values from sessionStorage
     $(".description").each(function(){
         $(this).val(localStorage.getItem($(this).attr("id")));
     });
-// });
+
 
 
 
