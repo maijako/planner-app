@@ -43,8 +43,3 @@ $(".saveBtn").on("click", function (event) {
 $(".description").each(function () {
     $(this).val(localStorage.getItem($(this).attr("id")));
 });
-
-
-
-
-
